@@ -11,7 +11,7 @@
   --font-secondary: "Space Grotesk", sans-serif;
 
   /* Global Colors */
-  --color-primary: #2CCB99;
+  --color-primary: #0FF207;
   --color-secondary: #01100C;
 
   /* Border Colors */
@@ -354,8 +354,6 @@
   @apply text-[50px] md:text-[500px] lg:text-[50px] xl:text-[50px] 2xl:text-[70px] text-primary leading-none font-bold;
 }
 
-
-/* global.css */
 .scrollbar-hide {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */

@@ -8,19 +8,18 @@ import StarImg from '../../assets/images/star.png';
   <div class="container">
     <div class="grid lg:grid-cols-2 gap-6 md:gap-8 items-center pb-20">
       <div class="text-center lg:text-left">
-        <h2 class="d2c_title relative h-[120px] md:h-[170px] lg:h-[210px] xl:h-[300px]">
-          Get Fit, Strong and <br />
-          <span class="text-outline absolute transform lg:transform-none -translate-x-1/2 lg:translate-x-0 left-1/2 lg:left-1 transition-all duration-500 ease-in-out">
-            healthy
-          </span>
-        </h2>
+<h2 class="d2c_title relative min-h-[180px] lg:min-h-[200px] xl:min-h-[240px]  text-[32px] md:text-[48px] lg:text-[52px] xl:text-[56px] leading-tight">
+  Transforma tu cuerpo en <br />
+  <span class="text-outline absolute transform lg:transform-none -translate-x-1/2 lg:translate-x-0 left-1/2 lg:left-1 transition-all duration-500 ease-in-out text-[64px] md:text-[80px] lg:text-[100px] xl:text-[120px]">
+    FITZONE
+  </span>
+</h2>
         <p>
-          Welcome to GymKear, where your fitness transformation begins.
-          Featuring a high-energy background image of individuals pushing their limits.
+          En FitZone, combinamos energía, fuerza y comunidad para ayudarte a transformar tu cuerpo y alcanzar tus metas. ¡Entrena con propósito!
         </p>
         <div class="flex justify-center lg:justify-start items-center gap-6 mt-6 md:mt-8 lg:mt-10">
-          <a href="#d2c_contact" class="w-full md:w-auto d2c_btn d2c_btn_primary">Join Now</a>
-          <a href="#d2c_about" class="w-full md:w-auto d2c_btn d2c_btn_secondary">Get Started</a>
+          <a href="#d2c_contact" class="w-full md:w-auto d2c_btn d2c_btn_primary">UNIRME</a>
+          <a href="#d2c_services" class="w-full md:w-auto d2c_btn d2c_btn_secondary">SABER MÁS</a>
           <div class="hidden lg:block">
             <img src={ArrowGif.src} alt="Arrow" class="max-h-[50px] w-auto transform -rotate-90" />
           </div>
@@ -29,9 +28,7 @@ import StarImg from '../../assets/images/star.png';
 
       <div class="relative">
         <img src={HeroImg.src} width={HeroImg.width} height={HeroImg.height} alt="Hero Expert Image" />
-        <div class="absolute top-0 right-32">
-          <img src={ArrowGif.src} width={ArrowGif.width} height={ArrowGif.height} alt="Arrow" class="max-h-[50px] w-auto transform rotate-180" />
-        </div>
+       
       </div>
     </div>
   </div>
@@ -48,9 +45,9 @@ import StarImg from '../../assets/images/star.png';
           {[...Array(6)].map(() => (
             <>
               <img src={StarImg.src} class="w-5 h-5" alt="Star" />
-              <p class="marquee-text text-primary">Welcome to GymKear</p>
+              <p class="marquee-text text-primary">Entrena con pasión</p>
               <img src={StarImg.src} class="w-5 h-5" alt="Star" />
-              <p class="marquee-text">Where your fitness transformation begins</p>
+              <p class="marquee-text">Vive con propósito.</p>
             </>
           ))}
         </div>
@@ -66,9 +63,9 @@ import StarImg from '../../assets/images/star.png';
           {[...Array(6)].map(() => (
             <>
               <img src={StarImg.src} class="w-5 h-5" alt="Star" />
-              <p class="marquee-text text-primary">Welcome to GymKear</p>
+              <p class="marquee-text text-primary">Entrena con pasión.</p>
               <img src={StarImg.src} class="w-5 h-5" alt="Star" />
-              <p class="marquee-text">Where your fitness transformation begins</p>
+              <p class="marquee-text">Vive con propósito.</p>
             </>
           ))}
         </div>
@@ -82,7 +79,7 @@ import StarImg from '../../assets/images/star.png';
 
 
 <script is:inline>
-  const words = ["healthy", "Power", "Strong", "Power", "Fit"];
+  const words = ["Fitzone", "Salud", "Poder",  "Fuerza", "Energía"];
   const span = document.querySelector(".text-outline");
   let wordIndex = 0;
   let isTyping = true;

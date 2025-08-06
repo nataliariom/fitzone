@@ -20,11 +20,11 @@ const galleryImages = [
   <div class="container">
     <div class="text-center w-full md:w-11/12 lg:w-4/5 xl:w-[60%] mx-auto">
       <h2 class="d2c_title">
-        View our <br />
-        <span class="text-outline" data-text="Gallery">Gallery</span>
+       Espacios que <br />
+        <span class="text-outline" data-text="Gallery">Inspiran</span>
       </h2>
       <p class="w-full md:w-4/5 xl:w-3/4 mx-auto">
-        A visual showcase of the gym facilities, equipment, group classes, and events.
+       Descubre cada rincón de FitZone: áreas de cardio, peso libre, zona wellness y mucho más. Diseñado para motivarte y lograr tu mejor versión.
       </p>
     </div>
 
@@ -38,7 +38,7 @@ const galleryImages = [
     alt={item.alt}
     class="w-full h-90 object-cover"
   />
-  <div class="absolute inset-0 bg-[#2ccb99] opacity-20 group-hover:opacity-0 transition-opacity duration-300 z-10"></div>
+  <div class="absolute inset-0 bg-[#0FF207] opacity-20 group-hover:opacity-0 transition-opacity duration-300 z-10"></div>
 </div>
 
 
@@ -54,7 +54,7 @@ const galleryImages = [
 
   let scrollAmount = 0;
   let maxScroll = 0;
-  let step = 1.5; // velocidad
+  let step = 1.5; 
   let interval = null;
 
   function startAutoScroll() {
@@ -65,10 +65,10 @@ const galleryImages = [
       scrollAmount += step;
 
       if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
-        carousel.scrollLeft = 0; // vuelve al inicio
+        carousel.scrollLeft = 0; 
         scrollAmount = 0;
       }
-    }, 20); // velocidad de movimiento
+    }, 20);
   }
 
   function stopAutoScroll() {
@@ -78,7 +78,6 @@ const galleryImages = [
   window.addEventListener('DOMContentLoaded', () => {
     startAutoScroll();
 
-    // Detener en hover
     carousel.addEventListener('mouseenter', stopAutoScroll);
     carousel.addEventListener('mouseleave', startAutoScroll);
   });

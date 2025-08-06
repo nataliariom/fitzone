@@ -6,41 +6,43 @@ import Testimonial3 from '../../assets/images/Testimonial-3.jpg';
 import Testimonial4 from '../../assets/images/Testimonial-4.jpg';
 
 const testimonials = [
-   {
+  {
     image: Testimonial1,
-    name: 'Kristin Watson',
-    text: `The Starter Package was just what I needed to kickstart my fitness journey. The basic group classes are fun and engaging, and the monthly progress assessments help me stay on track. The gym's atmosphere is welcoming, and the staff is always ready to help.`,
+    name: 'Karen Mendoza',
+    text: `Tomé el paquete de inicio y fue lo mejor que pude hacer. Las clases grupales son súper dinámicas y me motivan a regresar. El ambiente es relajado pero enfocado. ¡Me encanta!`,
   },
   {
     image: Testimonial2,
-    name: 'Jordan Mitchell',
-    text: `GymKear's Starter Package gave me exactly what I was looking for—a well-rounded introduction to fitness. The group classes are energizing and perfectly suited for beginners, and I love that they keep me excited to come back.`,
+    name: 'Diego Torres',
+    text: `FitZone fue justo lo que buscaba: un lugar donde pudiera entrenar sin sentirme juzgado. Las clases están pensadas para todos los niveles y el seguimiento mensual es muy útil.`,
   },
   {
     image: Testimonial3,
-    name: 'Emily Parker',
-    text: `I was a bit nervous about starting my fitness journey, but GymKear made it easy! The Starter Package gave me access to everything I needed, from group classes that are fun and challenging to one-on-one monthly check-ins that keep me on track.`,
+    name: 'Mariana López',
+    text: `Al principio tenía miedo de no seguir el ritmo, pero los entrenadores te acompañan en todo momento. Me siento mucho más fuerte, enfocada y feliz desde que empecé en FitZone.`,
   },
   {
     image: Testimonial4,
-    name: 'David Ramirez',
-    text: `As someone new to fitness, GymKear's Starter Package exceeded my expectations. The group classes are always exciting, with instructors who make each session enjoyable while pushing you to your limits. The monthly progress reports are great for motivation.`,
+    name: 'Rafael Jiménez',
+    text: `Nunca había ido a un gimnasio y ahora no me lo pierdo. Las clases, el ambiente y la atención personalizada hacen toda la diferencia. Ya no lo veo como una obligación, ¡sino como mi espacio!`,
   },
 ];
+
 ---
-<section class="d2c_testimonials d2c_gradient_tr" id="d2c_testimonial">
+<section class="d2c_testimonials d2c_gradient_bl" id="d2c_testimonial">
    <div class="container overflow-hidden"></div>
   <div class="container mx-auto px-4">
     <div class="text-center max-w-3xl mx-auto mb-12">
-      <h2 class="text-4xl font-bold text-white mb-2">Our Clients <br /><span class="text-outline">Feedback</span></h2>
-      <p class="text-gray-400">We provide clear and concise answers to help users understand more about our services.</p>
+      <h2 class="text-4xl font-bold text-white mb-2">Lo que dicen nuestros<br /><span class="text-outline"> clientes</span></h2>
+      <p class="text-gray-400">Opiniones reales de personas reales que decidieron transformar su vida con FitZone.</p>
     </div>
 
-    <!-- 💻 Desktop layout estilo Bubble -->
+
+    <!--  Desktop -->
     <div class="hidden lg:flex gap-4 overflow-hidden" id="testimonial-desktop">
       {
         testimonials.map((item, index) => (
-          <div class="testimonial-bubble group flex-[0.9] rounded-xl overflow-hidden transition-all duration-500 cursor-pointer relative h-[480px] bg-black text-white">
+          <div class="testimonial-team group flex-[0.9] rounded-xl overflow-hidden transition-all duration-500 cursor-pointer relative h-[480px] bg-black text-white">
             <div class="w-full h-full relative">
               <img src={item.image.src} alt={item.name} class="w-full h-full object-cover grayscale group-[.active]:grayscale-0 transition-all duration-300" loading="lazy" />
               <div class="absolute inset-0 bg-black/40"></div>
@@ -56,7 +58,7 @@ const testimonials = [
       }
     </div>
 
-    <!-- 📱 Mobile layout -->
+    <!--  Mobile layout -->
     <div class="block lg:hidden mt-10 space-y-6">
       {
         testimonials.map((item) => (
@@ -73,12 +75,12 @@ const testimonials = [
   </div>
 </section>
 <script is:inline>
-  const bubbles = document.querySelectorAll('.testimonial-bubble');
-  if (bubbles.length) {
-    bubbles[0].classList.add('active');
-    bubbles.forEach((b) => {
+  const teams = document.querySelectorAll('.testimonial-team');
+  if (teams.length) {
+    teams[0].classList.add('active');
+    teams.forEach((b) => {
       b.addEventListener('click', () => {
-        bubbles.forEach((g) => g.classList.remove('active'));
+        teams.forEach((g) => g.classList.remove('active'));
         b.classList.add('active');
       });
     });

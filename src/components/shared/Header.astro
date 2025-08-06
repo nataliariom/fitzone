@@ -1,5 +1,5 @@
 ---
-import logo from "../../assets/images/logo/logo.png";
+import logo from "../../assets/images/logo/Fitzone-md.png";
 import menuIcon from "../../assets/images/Menu-button-icon.png";
 import closeIcon from "../../assets/images/cross.png";
 ---
@@ -12,8 +12,8 @@ import closeIcon from "../../assets/images/cross.png";
           <a href="/" id="home-link">
             <img
               src={logo.src}
-              alt="GymKear logo"
-              class="max-w-[180px] md:max-w-[202px]"
+              alt="Fitzone Logo"
+              class="max-w-[70px] md:max-w-[60px]"
               loading="eager"
             />
           </a>
@@ -24,8 +24,8 @@ import closeIcon from "../../assets/images/cross.png";
   <a href="#d2c_hero" class="hover:text-primary transition">Inicio</a>
   <a href="#d2c_about" class="hover:text-primary transition">Nosotros</a>
   <a href="#d2c_services" class="hover:text-primary transition">Servicios</a>
-  <a href="#d2c_gallery" class="hover:text-primary transition">Galleria</a>
-  <a href="#d2c_pricing" class="hover:text-primary transition">Precios</a>
+  <a href="#d2c_gallery" class="hover:text-primary transition">Instalaciones</a>
+  <a href="#d2c_team" class="hover:text primary transition">Coaches</a>
   <a href="#d2c_testimonial" class="hover:text-primary transition">Testimonios</a>
   <a href="#d2c_faq" class="hover:text-primary transition">FAQ</a>
   <a href="#d2c_contact" class="hover:text-primary transition">Contacto</a>
@@ -60,8 +60,8 @@ import closeIcon from "../../assets/images/cross.png";
         <a href="#d2c_hero" class="nav_link takeToSmall name">Inicio</a>
         <a href="#d2c_about" class="nav_link takeToSmall name">Nosotros</a>
         <a href="#d2c_services" class="nav_link takeToSmall name">Servicios</a>
-        <a href="#d2c_gallery" class="nav_link takeToSmall name">Galleria</a>
-        <a href="#d2c_pricing" class="nav_link takeToSmall name">Precios</a>
+         <a href="#d2c_gallery" class="nav_link takeToSmall name">Instalaciones</a>
+        <a href="#d2c_team" class="nav_link takeToSmall name">Coaches</a>
         <a href="#d2c_testimonial" class="nav_link takeToSmall name">Testimonios</a>
         <a href="#d2c_faq" class="nav_link takeToSmall name">FAQ</a>
         <a href="#d2c_contact" class="nav_link takeToSmall name">Contacto</a>
@@ -78,7 +78,6 @@ import closeIcon from "../../assets/images/cross.png";
     const mobileNavContainer = document.getElementById("mobile-nav-links");
     const desktopLinks = document.querySelectorAll("#d2c_nav_link_wrapper .nav_link");
 
-    // Copia links al menú móvil
     desktopLinks.forEach((link) => {
       const clone = link.cloneNode(true);
       mobileNavContainer?.appendChild(clone);
@@ -126,7 +125,6 @@ import closeIcon from "../../assets/images/cross.png";
 
 
 
-    // Apply spacing to mobile links
     const isMobile = window.innerWidth <= 1024;
     mobileLinks.forEach((link, i) => {
       const margin = isMobile ? i * 20 : i * 30;

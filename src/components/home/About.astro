@@ -10,15 +10,14 @@ import StarImg from '../../assets/images/star.png';
       <!-- Left Content -->
       <div>
         <h2 class="d2c_title">
-          Discover Our <br />
-          <span class="text-outline" data-text="mission">mission</span>
+         Conoce nuestra <br />
+          <span class="text-outline " data-text="mission">misión</span>
         </h2>
         <p class="mt-4">
-          At GymKear, we believe in empowering you to reach your full potential. Our About section
-          introduces you to our mission and values.
+           En FitZone, transformamos más que cuerpos: transformamos vidas. Nuestra misión es ayudarte a descubrir tu mejor versión, con un enfoque integral en fuerza, energía y bienestar.
         </p>
         <ul class="mt-8 space-y-2">
-          {["Expert Guidance", "State-of-the-Art Facilities", "Supportive Community"].map((text, i) => (
+          {["Entrenadores certificados", "Instalaciones de primer nivel", "Comunidad que impulsa"].map((text, i) => (
             <li class="flex items-center gap-2" >
               <img src={StarImg.src} alt="Star" width={20} height={20} class="w-5 h-5" />
               <span>{text}</span>
@@ -43,9 +42,9 @@ import StarImg from '../../assets/images/star.png';
     <!-- Counter Section -->
     <div class="grid grid-cols-12 gap-6 md:gap-8 mt-10">
       {[
-        { value: 8, suffix: "+", label: "year of experiences", col: "1" },
-        { value: 10, suffix: "k", label: "Happy customers", col: "5" },
-        { value: 30, suffix: "+", label: "expert trainers", col: "9" },
+        { value: 4, suffix: "+", label: "años de experiencia", col: "1" },
+        { value: 2, suffix: "k", label: "clientes satisfechos", col: "5" },
+        { value: 3, suffix: "+", label: "entrenadores expertos", col: "9" },
       ].map((item, index) => (
         <div class={`col-start-1 col-span-12 md:col-start-${item.col} md:col-span-4`}>
           <div class="d2c_counter_content_wrapper d2c_card_bg">
