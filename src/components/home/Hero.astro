@@ -2,6 +2,8 @@
 import HeroImg from '../../assets/images/hero-image.png';
 import ArrowGif from '../../assets/images/arrow.gif';
 import StarImg from '../../assets/images/star.png';
+import { Image } from "astro:assets";
+
 ---
 
 <section class="d2c_gradient_tr overflow-hidden pt-[100px]" id="d2c_hero">
@@ -21,15 +23,28 @@ import StarImg from '../../assets/images/star.png';
           <a href="#d2c_contact" class="w-full md:w-auto d2c_btn d2c_btn_primary">UNIRME</a>
           <a href="#d2c_services" class="w-full md:w-auto d2c_btn d2c_btn_secondary">SABER MÁS</a>
           <div class="hidden lg:block">
-            <img src={ArrowGif.src} alt="Arrow" class="max-h-[50px] w-auto transform -rotate-90" />
-          </div>
+              <Image
+                src={ArrowGif}
+                alt="Flecha decorativa"
+                width={50}
+                height={50}
+                class="max-h-[50px] w-auto transform -rotate-90"
+                 loading="eager"
+              />
+            </div>
         </div>
       </div>
 
       <div class="relative">
-        <img src={HeroImg.src} width={HeroImg.width} height={HeroImg.height} alt="Hero Expert Image" />
-       
-      </div>
+          <Image
+            src={HeroImg}
+            alt="Imagen de Hero"
+            width={HeroImg.width}
+            height={HeroImg.height}
+            class="w-full h-auto"
+             loading="eager"
+          />
+        </div>
     </div>
   </div>
 </section>
@@ -44,9 +59,9 @@ import StarImg from '../../assets/images/star.png';
         <div class="flex shrink-0 min-w-full items-center gap-6">
           {[...Array(6)].map(() => (
             <>
-              <img src={StarImg.src} class="w-5 h-5" alt="Star" />
+              <Image src={StarImg} class="w-5 h-5" alt="Star"  loading="lazy"/>
               <p class="marquee-text text-primary">Entrena con pasión</p>
-              <img src={StarImg.src} class="w-5 h-5" alt="Star" />
+              <Image src={StarImg} class="w-5 h-5" alt="Star"  loading="lazy"/>
               <p class="marquee-text">Vive con propósito.</p>
             </>
           ))}
@@ -62,9 +77,9 @@ import StarImg from '../../assets/images/star.png';
         <div class="flex shrink-0 min-w-full items-center gap-6">
           {[...Array(6)].map(() => (
             <>
-              <img src={StarImg.src} class="w-5 h-5" alt="Star" />
+              <img src={StarImg.src} class="w-5 h-5" alt="Star"  loading="lazy" />
               <p class="marquee-text text-primary">Entrena con pasión.</p>
-              <img src={StarImg.src} class="w-5 h-5" alt="Star" />
+              <img src={StarImg.src} class="w-5 h-5" alt="Star"  loading="lazy" />
               <p class="marquee-text">Vive con propósito.</p>
             </>
           ))}

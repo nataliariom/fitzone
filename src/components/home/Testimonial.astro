@@ -4,6 +4,7 @@ import Testimonial1 from '../../assets/images/Testimonial-1.jpg';
 import Testimonial2 from '../../assets/images/Testimonial-2.jpg';
 import Testimonial3 from '../../assets/images/Testimonial-3.jpg';
 import Testimonial4 from '../../assets/images/Testimonial-4.jpg';
+import { Image } from 'astro:assets';
 
 const testimonials = [
   {
@@ -44,8 +45,13 @@ const testimonials = [
         testimonials.map((item, index) => (
           <div class="testimonial-team group flex-[0.9] rounded-xl overflow-hidden transition-all duration-500 cursor-pointer relative h-[480px] bg-black text-white">
             <div class="w-full h-full relative">
-              <img src={item.image.src} alt={item.name} class="w-full h-full object-cover grayscale group-[.active]:grayscale-0 transition-all duration-300" loading="lazy" />
-              <div class="absolute inset-0 bg-black/40"></div>
+             <Image
+                src={item.image}
+                alt={item.name}
+                class="w-full h-full object-cover grayscale group-[.active]:grayscale-0 transition-all duration-300"
+                loading="lazy"
+              />         
+             <div class="absolute inset-0 bg-black/40"></div>
             </div>
             <div class="absolute inset-0 p-6 flex items-end opacity-0 max-w-0 transform translate-y-4 group-[.active]:opacity-100 group-[.active]:max-w-md group-[.active]:translate-y-0 transition-all duration-500 pointer-events-none group-[.active]:pointer-events-auto">
               <div>
@@ -63,8 +69,13 @@ const testimonials = [
       {
         testimonials.map((item) => (
           <div class="bg-[#2E3937] rounded-lg overflow-hidden shadow-lg text-center">
-            <img src={item.image.src} alt={item.name} class="w-full h-64 object-cover" />
-            <div class="p-4">
+          <Image
+              src={item.image}
+              alt={item.name}
+              class="w-full h-64 object-cover"
+              loading="lazy"
+            />      
+                  <div class="p-4">
               <p class="text-white-700 text-sm mb-3">{item.text}</p>
               <h5 class="text-primary uppercase font-bold text-lg">{item.name}</h5>
             </div>

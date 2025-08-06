@@ -1,6 +1,7 @@
 ---
 import AboutImg from '../../assets/images/About_img.png';
 import StarImg from '../../assets/images/star.png';
+import { Image } from "astro:assets";
 ---
 
 <section class="d2c_gradient_lb pt-14 md:pt-24" id="d2c_about">
@@ -19,7 +20,7 @@ import StarImg from '../../assets/images/star.png';
         <ul class="mt-8 space-y-2">
           {["Entrenadores certificados", "Instalaciones de primer nivel", "Comunidad que impulsa"].map((text, i) => (
             <li class="flex items-center gap-2" >
-              <img src={StarImg.src} alt="Star" width={20} height={20} class="w-5 h-5" />
+              <Image src={StarImg} alt="Icono estrella" width={20} height={20} loading="lazy" class="w-5 h-5" />
               <span>{text}</span>
             </li>
           ))}
@@ -28,11 +29,12 @@ import StarImg from '../../assets/images/star.png';
 
       <!-- Right Image -->
       <div class="relative">
-        <img
-          src={AboutImg.src}
-          alt="Expert Group Image"
+         <Image
+          src={AboutImg}
+          alt="Imagen grupo de expertos"
           width={600}
           height={400}
+          loading="lazy"
           class="w-full h-auto"
         />
         <div class="d2c_image_overlay absolute bottom-0 w-full h-1/2"></div>

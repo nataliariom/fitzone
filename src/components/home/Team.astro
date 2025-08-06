@@ -2,6 +2,7 @@
 import expert1 from '../../assets/images/expert-1.jpg';
 import expert2 from '../../assets/images/expert-2.jpg';
 import expert3 from '../../assets/images/expert-3.jpg';
+import { Image } from 'astro:assets';
 
 
 const teamData = [
@@ -42,9 +43,9 @@ const teamData = [
       {teamData.map((trainer) => (
         <div class="relative group d2c_expert_wrapper h-full">
           <div class="h-full">
-            <img
-              src={trainer.image.src}
-              alt={`${trainer.name} Image`}
+             <Image
+              src={trainer.image}
+              alt={trainer.name}
               class="w-full h-full object-cover"
               loading="lazy"
             />

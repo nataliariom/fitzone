@@ -1,5 +1,6 @@
 ---
 import FooterLogo from "../../assets/images/logo/Fitzone-lg.png";
+import { Image } from "astro:assets";
 ---
 
 <footer>
@@ -9,14 +10,15 @@ import FooterLogo from "../../assets/images/logo/Fitzone-lg.png";
       
       <div class="col-span-12 md:col-span-6 lg:col-span-3 flex justify-center md:justify-start">
         <a href="/" id="home-link">
-          <img
-            src={FooterLogo.src}
-            alt="Logo"
-            width="100"
-            height="100"
-            class="max-w-[180px] xl:max-w-[265px] h-auto"
-            loading="lazy"
-          />
+         <Image
+              src={FooterLogo}
+              alt="Logo Fitzone"
+              width={180}
+              height={100}
+              format="webp"
+              loading="lazy"
+              class="max-w-[180px] xl:max-w-[265px] h-auto"
+            />
         </a>
       </div>
 

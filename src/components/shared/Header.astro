@@ -2,6 +2,7 @@
 import logo from "../../assets/images/logo/Fitzone-md.png";
 import menuIcon from "../../assets/images/Menu-button-icon.png";
 import closeIcon from "../../assets/images/cross.png";
+import { Image } from "astro:assets";
 ---
 
 <header id="navbar" class="fixed top-0 w-full border-b border-b-greenish-gray bg-greenish z-40">  <nav class="d2c_navbar">
@@ -10,10 +11,12 @@ import closeIcon from "../../assets/images/cross.png";
         <!-- Logo -->
         <div class="mr-20">
           <a href="/" id="home-link">
-            <img
-              src={logo.src}
+            <Image
+              src={logo}
               alt="Fitzone Logo"
-              class="max-w-[70px] md:max-w-[60px]"
+              width={70}
+              height={70}
+              class="max-w-[70px] md:max-w-[60px] h-auto"
               loading="eager"
             />
           </a>
