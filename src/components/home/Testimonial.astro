@@ -1,0 +1,88 @@
+---
+// Testimonial.astro
+import Testimonial1 from '../../assets/images/Testimonial-1.jpg';
+import Testimonial2 from '../../assets/images/Testimonial-2.jpg';
+import Testimonial3 from '../../assets/images/Testimonial-3.jpg';
+import Testimonial4 from '../../assets/images/Testimonial-4.jpg';
+
+const testimonials = [
+   {
+    image: Testimonial1,
+    name: 'Kristin Watson',
+    text: `The Starter Package was just what I needed to kickstart my fitness journey. The basic group classes are fun and engaging, and the monthly progress assessments help me stay on track. The gym's atmosphere is welcoming, and the staff is always ready to help.`,
+  },
+  {
+    image: Testimonial2,
+    name: 'Jordan Mitchell',
+    text: `GymKear's Starter Package gave me exactly what I was looking for—a well-rounded introduction to fitness. The group classes are energizing and perfectly suited for beginners, and I love that they keep me excited to come back.`,
+  },
+  {
+    image: Testimonial3,
+    name: 'Emily Parker',
+    text: `I was a bit nervous about starting my fitness journey, but GymKear made it easy! The Starter Package gave me access to everything I needed, from group classes that are fun and challenging to one-on-one monthly check-ins that keep me on track.`,
+  },
+  {
+    image: Testimonial4,
+    name: 'David Ramirez',
+    text: `As someone new to fitness, GymKear's Starter Package exceeded my expectations. The group classes are always exciting, with instructors who make each session enjoyable while pushing you to your limits. The monthly progress reports are great for motivation.`,
+  },
+];
+---
+<section class="d2c_testimonials d2c_gradient_tr" id="d2c_testimonial">
+   <div class="container overflow-hidden"></div>
+  <div class="container mx-auto px-4">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h2 class="text-4xl font-bold text-white mb-2">Our Clients <br /><span class="text-outline">Feedback</span></h2>
+      <p class="text-gray-400">We provide clear and concise answers to help users understand more about our services.</p>
+    </div>
+
+    <!-- 💻 Desktop layout estilo Bubble -->
+    <div class="hidden lg:flex gap-4 overflow-hidden" id="testimonial-desktop">
+      {
+        testimonials.map((item, index) => (
+          <div class="testimonial-bubble group flex-[0.9] rounded-xl overflow-hidden transition-all duration-500 cursor-pointer relative h-[480px] bg-black text-white">
+            <div class="w-full h-full relative">
+              <img src={item.image.src} alt={item.name} class="w-full h-full object-cover grayscale group-[.active]:grayscale-0 transition-all duration-300" loading="lazy" />
+              <div class="absolute inset-0 bg-black/40"></div>
+            </div>
+            <div class="absolute inset-0 p-6 flex items-end opacity-0 max-w-0 transform translate-y-4 group-[.active]:opacity-100 group-[.active]:max-w-md group-[.active]:translate-y-0 transition-all duration-500 pointer-events-none group-[.active]:pointer-events-auto">
+              <div>
+                <p class="text-sm text-white leading-relaxed">{item.text}</p>
+                <h5 class="mt-4 text-xl font-semibold text-primary uppercase">{item.name}</h5>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- 📱 Mobile layout -->
+    <div class="block lg:hidden mt-10 space-y-6">
+      {
+        testimonials.map((item) => (
+          <div class="bg-[#2E3937] rounded-lg overflow-hidden shadow-lg text-center">
+            <img src={item.image.src} alt={item.name} class="w-full h-64 object-cover" />
+            <div class="p-4">
+              <p class="text-white-700 text-sm mb-3">{item.text}</p>
+              <h5 class="text-primary uppercase font-bold text-lg">{item.name}</h5>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+<script is:inline>
+  const bubbles = document.querySelectorAll('.testimonial-bubble');
+  if (bubbles.length) {
+    bubbles[0].classList.add('active');
+    bubbles.forEach((b) => {
+      b.addEventListener('click', () => {
+        bubbles.forEach((g) => g.classList.remove('active'));
+        b.classList.add('active');
+      });
+    });
+  }
+</script>
+
+

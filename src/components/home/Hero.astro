@@ -1,0 +1,129 @@
+---
+import HeroImg from '../../assets/images/hero-image.png';
+import ArrowGif from '../../assets/images/arrow.gif';
+import StarImg from '../../assets/images/star.png';
+---
+
+<section class="d2c_gradient_tr overflow-hidden pt-[100px]" id="d2c_hero">
+  <div class="container">
+    <div class="grid lg:grid-cols-2 gap-6 md:gap-8 items-center pb-20">
+      <div class="text-center lg:text-left">
+        <h2 class="d2c_title relative h-[120px] md:h-[170px] lg:h-[210px] xl:h-[300px]">
+          Get Fit, Strong and <br />
+          <span class="text-outline absolute transform lg:transform-none -translate-x-1/2 lg:translate-x-0 left-1/2 lg:left-1 transition-all duration-500 ease-in-out">
+            healthy
+          </span>
+        </h2>
+        <p>
+          Welcome to GymKear, where your fitness transformation begins.
+          Featuring a high-energy background image of individuals pushing their limits.
+        </p>
+        <div class="flex justify-center lg:justify-start items-center gap-6 mt-6 md:mt-8 lg:mt-10">
+          <a href="#d2c_contact" class="w-full md:w-auto d2c_btn d2c_btn_primary">Join Now</a>
+          <a href="#d2c_about" class="w-full md:w-auto d2c_btn d2c_btn_secondary">Get Started</a>
+          <div class="hidden lg:block">
+            <img src={ArrowGif.src} alt="Arrow" class="max-h-[50px] w-auto transform -rotate-90" />
+          </div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <img src={HeroImg.src} width={HeroImg.width} height={HeroImg.height} alt="Hero Expert Image" />
+        <div class="absolute top-0 right-32">
+          <img src={ArrowGif.src} width={ArrowGif.width} height={ArrowGif.height} alt="Arrow" class="max-h-[50px] w-auto transform rotate-180" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+<!-- Marquee Sections (Crossed at Center) -->
+<div class="relative w-full pt-[100px]">
+  <!-- Línea 1 -->
+  <div class="absolute top-1/2 left-1/2 w-full transform -translate-x-1/2 -translate-y-1/2 rotate-[8deg] z-10 pointer-events-none">
+    <div class="w-full overflow-hidden border-y border-primary py-3 px-20 bg-secondary">
+      <div class="flex w-max animate-marquee-left whitespace-nowrap">
+        <div class="flex shrink-0 min-w-full items-center gap-6">
+          {[...Array(6)].map(() => (
+            <>
+              <img src={StarImg.src} class="w-5 h-5" alt="Star" />
+              <p class="marquee-text text-primary">Welcome to GymKear</p>
+              <img src={StarImg.src} class="w-5 h-5" alt="Star" />
+              <p class="marquee-text">Where your fitness transformation begins</p>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Línea 2 -->
+  <div class="absolute top-1/2 left-1/2 w-full transform -translate-x-1/2 -translate-y-1/2 -rotate-[8deg] z-10 pointer-events-none">
+    <div class="w-full overflow-hidden border-y border-primary py-3 px-20 bg-secondary">
+      <div class="flex w-max animate-marquee-right whitespace-nowrap">
+        <div class="flex shrink-0 min-w-full items-center gap-6">
+          {[...Array(6)].map(() => (
+            <>
+              <img src={StarImg.src} class="w-5 h-5" alt="Star" />
+              <p class="marquee-text text-primary">Welcome to GymKear</p>
+              <img src={StarImg.src} class="w-5 h-5" alt="Star" />
+              <p class="marquee-text">Where your fitness transformation begins</p>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script is:inline>
+  const words = ["healthy", "Power", "Strong", "Power", "Fit"];
+  const span = document.querySelector(".text-outline");
+  let wordIndex = 0;
+  let isTyping = true;
+  let letterIndex = 0;
+
+  function typeEffect() {
+    const currentWord = words[wordIndex];
+
+    if (isTyping) {
+      if (letterIndex <= currentWord.length) {
+        const part = currentWord.substring(0, letterIndex);
+        if (span) {
+          span.textContent = part;
+          span.setAttribute("data-text", part);
+        }
+        letterIndex++;
+        setTimeout(typeEffect, 100);
+      } else {
+        isTyping = false;
+        setTimeout(typeEffect, 1500);
+      }
+    } else {
+      if (letterIndex > 0) {
+        const part = currentWord.substring(0, letterIndex - 1);
+        if (span) {
+          span.textContent = part;
+          span.setAttribute("data-text", part);
+        }
+        letterIndex--;
+        setTimeout(typeEffect, 80);
+      } else {
+        wordIndex = (wordIndex + 1) % words.length;
+        letterIndex = 0;
+        isTyping = true;
+        setTimeout(typeEffect, 100);
+      }
+    }
+  }
+
+  if (span) {
+    span.classList.add("transition-all", "duration-500", "ease-in-out");
+    typeEffect();
+  }
+</script>

@@ -1,0 +1,136 @@
+---
+import logo from "../../assets/images/logo/logo.png";
+import menuIcon from "../../assets/images/Menu-button-icon.png";
+import closeIcon from "../../assets/images/cross.png";
+---
+
+<header id="navbar" class="fixed top-0 w-full border-b border-b-greenish-gray bg-greenish z-40">  <nav class="d2c_navbar">
+    <div class="mr-auto flex justify-between items-center gap-3 lg:gap-6">
+      <div class="flex items-center justify-between gap-4 flex-wrap w-full container">
+        <!-- Logo -->
+        <div class="mr-20">
+          <a href="/" id="home-link">
+            <img
+              src={logo.src}
+              alt="GymKear logo"
+              class="max-w-[180px] md:max-w-[202px]"
+              loading="eager"
+            />
+          </a>
+        </div>
+
+      <!-- Desktop Navigation -->
+<div class="hidden lg:flex space-x-6 d2c_navigation mx-auto text-sm font-bold uppercase tracking-wide text-white">
+  <a href="#d2c_hero" class="hover:text-primary transition">Inicio</a>
+  <a href="#d2c_about" class="hover:text-primary transition">Nosotros</a>
+  <a href="#d2c_services" class="hover:text-primary transition">Servicios</a>
+  <a href="#d2c_gallery" class="hover:text-primary transition">Galleria</a>
+  <a href="#d2c_pricing" class="hover:text-primary transition">Precios</a>
+  <a href="#d2c_testimonial" class="hover:text-primary transition">Testimonios</a>
+  <a href="#d2c_faq" class="hover:text-primary transition">FAQ</a>
+  <a href="#d2c_contact" class="hover:text-primary transition">Contacto</a>
+</div>
+
+
+        <!-- Mobile Menu Button -->
+    <div class="flex items-center lg:hidden">
+                    <button
+            id="mobile-menu-btn"
+            class="transition-all duration-500 d2c_navigation cursor-pointer"
+            data-icon-menu={menuIcon.src}
+            data-icon-close={closeIcon.src}
+            >
+            <img
+                src={menuIcon.src}
+                alt="Menu icon"
+                id="menu-toggle-icon"
+                class="object-contain cursor-pointer"
+            />
+            </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-menu" class="bg-secondary absolute right-0 left-0 -z-10">
+    <div class="container">
+      <div class="block pt-10 w-full">
+         <div class="mt-2 grid grid-cols-1 gap-1 gap-x-4" id="mobile-nav-links">
+        <a href="#d2c_hero" class="nav_link takeToSmall name">Inicio</a>
+        <a href="#d2c_about" class="nav_link takeToSmall name">Nosotros</a>
+        <a href="#d2c_services" class="nav_link takeToSmall name">Servicios</a>
+        <a href="#d2c_gallery" class="nav_link takeToSmall name">Galleria</a>
+        <a href="#d2c_pricing" class="nav_link takeToSmall name">Precios</a>
+        <a href="#d2c_testimonial" class="nav_link takeToSmall name">Testimonios</a>
+        <a href="#d2c_faq" class="nav_link takeToSmall name">FAQ</a>
+        <a href="#d2c_contact" class="nav_link takeToSmall name">Contacto</a>
+      </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const mobileBtn = document.getElementById("mobile-menu-btn");
+    const mobileIcon = document.getElementById("menu-toggle-icon");
+    const mobileNavContainer = document.getElementById("mobile-nav-links");
+    const desktopLinks = document.querySelectorAll("#d2c_nav_link_wrapper .nav_link");
+
+    // Copia links al menú móvil
+    desktopLinks.forEach((link) => {
+      const clone = link.cloneNode(true);
+      mobileNavContainer?.appendChild(clone);
+    });
+
+    const mobileLinks = document.querySelectorAll("#mobile-nav-links .nav_link");
+
+    const toggleMenu = () => {
+      document.body.classList.toggle("mobile-menu-expanded");
+      const isOpen = document.body.classList.contains("mobile-menu-expanded");
+
+      const menuIcon = mobileBtn.getAttribute("data-icon-menu");
+      const closeIcon = mobileBtn.getAttribute("data-icon-close");
+
+      if (mobileIcon) {
+        mobileIcon.src = isOpen ? closeIcon : menuIcon;
+      }
+    };
+
+    mobileBtn?.addEventListener("click", toggleMenu);
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", toggleMenu);
+    });
+
+    const activateLink = (id) => {
+      const allLinks = [...desktopLinks, ...mobileLinks];
+      allLinks.forEach((link) => {
+        const href = link.getAttribute("href");
+        link.classList.toggle("active", href?.substring(1) === id);
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            activateLink(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+
+
+    // Apply spacing to mobile links
+    const isMobile = window.innerWidth <= 1024;
+    mobileLinks.forEach((link, i) => {
+      const margin = isMobile ? i * 20 : i * 30;
+      link.style.marginLeft = `${margin}px`;
+    });
+  });
+</script>

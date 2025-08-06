@@ -1,0 +1,77 @@
+---
+import ServicesIcon1 from '../../assets/images/Service-Icon-1.png';
+import ServicesIcon2 from '../../assets/images/Service-Icon-2.png';
+import ServicesIcon3 from '../../assets/images/Service-Icon-3.png';
+import ServicesIcon4 from '../../assets/images/Service-Icon-4.png';
+
+const serviceData = [
+  {
+    title: "Personal Training",
+    description: "Our certified personal trainers provide one-on-one coaching tailored to your individual fitness goals.",
+    img: ServicesIcon1,
+    alt: "Personal Training",
+  },
+  {
+    title: "Nutrition Plan",
+    description: "Our expert nutritionists create personalized meal plans to support your fitness and health goals.",
+    img: ServicesIcon2,
+    alt: "Nutrition Plan",
+  },
+  {
+    title: "Wellness Program",
+    description: "Engage in comprehensive wellness programs that include mental, physical, and emotional wellbeing.",
+    img: ServicesIcon3,
+    alt: "Wellness Program",
+  },
+  {
+    title: "Fitness Assessment",
+    description: "Track your progress with in-depth fitness assessments to adjust and improve your performance.",
+    img: ServicesIcon4,
+    alt: "Fitness Assessment",
+  },
+];
+---
+
+<section class="d2c_gradient_tl d2c_offer relative" id="d2c_services">
+  <div class="container">
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+      <!-- Left Title Section -->
+      <div class="d2c_offers_left_content_wrapper">
+        <div class="d2c_offers_left_content self-start">
+          <h2 class="d2c_title">
+            What We <br />
+            <span class="text-outline" data-text="offer">offer</span>
+          </h2>
+          <p>
+            Explore the range of services offered by GymKear — from Personal Training and Group Classes
+            to Nutrition Plans, Online Coaching, Fitness Assessments, and Wellness Programs.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Cards Section -->
+      <div class="space-y-5 d2c_offers_right_cards">
+        {
+          serviceData.map((service, index) => (
+            <div class="d2c_offers_card_parent" >
+              <div class="d2c_offers_card relative">
+                <div class="d2c_card_bg d2c_offers_icon">
+                  <img
+                    src={service.img.src}
+                    width="50"
+                    height="50"
+                    alt={service.alt}
+                    class="w-auto h-auto"
+                    loading="lazy"
+                  />
+                </div>
+                <h3 class="d2c_offers_title">{service.title}</h3>
+                <p>{service.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

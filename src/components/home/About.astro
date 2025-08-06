@@ -1,0 +1,97 @@
+---
+import AboutImg from '../../assets/images/About_img.png';
+import StarImg from '../../assets/images/star.png';
+---
+
+<section class="d2c_gradient_lb pt-14 md:pt-24" id="d2c_about">
+  <div class="container">
+    <!-- Mission Section -->
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
+      <!-- Left Content -->
+      <div>
+        <h2 class="d2c_title">
+          Discover Our <br />
+          <span class="text-outline" data-text="mission">mission</span>
+        </h2>
+        <p class="mt-4">
+          At GymKear, we believe in empowering you to reach your full potential. Our About section
+          introduces you to our mission and values.
+        </p>
+        <ul class="mt-8 space-y-2">
+          {["Expert Guidance", "State-of-the-Art Facilities", "Supportive Community"].map((text, i) => (
+            <li class="flex items-center gap-2" >
+              <img src={StarImg.src} alt="Star" width={20} height={20} class="w-5 h-5" />
+              <span>{text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Right Image -->
+      <div class="relative">
+        <img
+          src={AboutImg.src}
+          alt="Expert Group Image"
+          width={600}
+          height={400}
+          class="w-full h-auto"
+        />
+        <div class="d2c_image_overlay absolute bottom-0 w-full h-1/2"></div>
+      </div>
+    </div>
+
+    <!-- Counter Section -->
+    <div class="grid grid-cols-12 gap-6 md:gap-8 mt-10">
+      {[
+        { value: 8, suffix: "+", label: "year of experiences", col: "1" },
+        { value: 10, suffix: "k", label: "Happy customers", col: "5" },
+        { value: 30, suffix: "+", label: "expert trainers", col: "9" },
+      ].map((item, index) => (
+        <div class={`col-start-1 col-span-12 md:col-start-${item.col} md:col-span-4`}>
+          <div class="d2c_counter_content_wrapper d2c_card_bg">
+            <div class="d2c_counter_content flex justify-center items-baseline gap-1">
+              <h4 class="counter-number" data-target={item.value.toString()}>0</h4>
+              <p class="counter-number">{item.suffix}</p>
+            </div>
+            <h5 class="lowercase text-xl xl:text-2xl font-normal">{item.label}</h5>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Script para efectos: outline + counters -->
+<script is:inline>
+  // Set outline effect
+  document.querySelectorAll(".text-outline").forEach((el) => {
+    const text = el.textContent?.trim() || '';
+    el.setAttribute("data-text", text);
+  });
+
+  // Counter animation
+  const counters = document.querySelectorAll("[data-target]");
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = Number(entry.target.getAttribute("data-target"));
+        const duration = 1000;
+        let startTime = null;
+
+        function animate(time) {
+          if (startTime === null) startTime = time;
+          const progress = Math.min((time - startTime) / duration, 1);
+          const value = Math.floor(progress * target);
+          entry.target.textContent = value.toString();
+          entry.target.setAttribute("data-text", value.toString());
+          if (progress < 1) requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  counters.forEach(el => observer.observe(el));
+</script>

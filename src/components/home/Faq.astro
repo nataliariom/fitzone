@@ -1,0 +1,102 @@
+---
+const faqList = [
+  {
+    question: "What are your operating hours?",
+    answer: "Bodyblooming is open from 5:00 AM to 10:00 PM on weekdays, and 7:00 AM to 8:00 PM on weekends.",
+  },
+  {
+    question: "Do I need to book classes in advance?",
+    answer: "Yes, we recommend booking classes in advance through our online portal or mobile app to secure your spot.",
+  },
+  {
+    question: "What should I bring for my first visit?",
+    answer: "Please bring a valid ID, workout clothes, a towel, and a water bottle. If you have signed up for personal training, bring any necessary documentation.",
+  },
+  {
+    question: "Are there any membership contracts?",
+    answer: "We offer both contract and no-contract membership options. You can choose a plan that best suits your commitment preference.",
+  },
+  {
+    question: "Do you offer trial memberships?",
+    answer: "Yes, we offer a one-week trial membership for new members to experience our facilities and services.",
+  },
+  {
+    question: "What types of payment do you accept?",
+    answer: "We accept cash, credit/debit cards, and online payments through our secure portal.",
+  },
+];
+---
+
+<section class="d2c_gradient_lb" id="d2c_faq">
+  <div class="container">
+    <div class="text-center w-full md:w-11/12 lg:w-4/5 xl:w-[60%] mx-auto">
+      <h2 class="d2c_title">
+        Frequently Asked <br />
+        <span class="text-outline" data-text="Questions">Questions</span>
+      </h2>
+      <p class="w-full md:w-4/5 xl:w-3/4 mx-auto">
+        We provide clear and concise answers to help users understand more about the gym's services and policies.
+      </p>
+    </div>
+
+    <div class="mb-6 w-full border border-greenish-gray rounded-lg mt-6 md:mt-10 p-5 md:py-14 md:px-20">
+      {faqList.map((item, idx) => (
+        <div class="border-b border-b-greenish-gray">
+          <div class="accordion-header cursor-pointer flex items-center gap-4 py-4">
+            <span class="text-primary" data-icon-wrapper data-state="closed">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 icon-plus" viewBox="0 0 24 24" fill="currentColor"><path d="M19 11H13V5h-2v6H5v2h6v6h2v-6h6z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 icon-minus hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13H5v-2h14v2z"/></svg>
+            </span>
+            <h4 class="d2c_subtitle">{item.question}</h4>
+          </div>
+          <div class="accordion-content overflow-hidden max-h-0 transition-all duration-300">
+            <p class="d2c_answer py-4">{item.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const headers = document.querySelectorAll(".accordion-header");
+
+    headers.forEach((header, idx) => {
+      const content = header.nextElementSibling;
+      const iconWrapper = header.querySelector("[data-icon-wrapper]");
+      const plusIcon = iconWrapper?.querySelector(".icon-plus");
+      const minusIcon = iconWrapper?.querySelector(".icon-minus");
+
+      if (idx === 0) {
+        header.classList.add("active");
+        content.style.maxHeight = content.scrollHeight + 32 + "px";
+        iconWrapper.setAttribute("data-state", "open");
+        plusIcon?.classList.add("hidden");
+        minusIcon?.classList.remove("hidden");
+      }
+
+      header.addEventListener("click", () => {
+        headers.forEach(h => {
+          h.classList.remove("active");
+          const cont = h.nextElementSibling;
+          const iconW = h.querySelector("[data-icon-wrapper]");
+          const plus = iconW?.querySelector(".icon-plus");
+          const minus = iconW?.querySelector(".icon-minus");
+          if (cont) cont.style.maxHeight = "";
+          iconW?.setAttribute("data-state", "closed");
+          plus?.classList.remove("hidden");
+          minus?.classList.add("hidden");
+        });
+
+        if (content.style.maxHeight === "") {
+          content.style.maxHeight = content.scrollHeight + 32 + "px";
+          header.classList.add("active");
+          iconWrapper?.setAttribute("data-state", "open");
+          plusIcon?.classList.add("hidden");
+          minusIcon?.classList.remove("hidden");
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,63 @@
+---
+import expert1 from '../../assets/images/expert-1.jpg';
+import expert2 from '../../assets/images/expert-2.jpg';
+import expert3 from '../../assets/images/expert-3.jpg';
+import expert4 from '../../assets/images/expert-4.jpg';
+import expert5 from '../../assets/images/expert-5.jpg';
+
+const teamData = [
+  {
+    name: 'Jeffrey Baley',
+    designation: 'Personal Trainer',
+    image: expert1,
+  },
+  {
+    name: 'Margaret Ford',
+    designation: 'Fitness Trainer',
+    image: expert2,
+  },
+  {
+    name: 'Steven Archer',
+    designation: 'Cross-fit Trainer',
+    image: expert3,
+  },
+];
+---
+
+<section class="d2c_gradient_br">
+  <div class="container">
+    <div class="text-center w-full md:w-11/12 lg:w-4/5 xl:w-[60%] mx-auto">
+      <h2 class="d2c_title">
+        Our Expert <br />
+        <span class="text-outline" data-text="trainees">trainees</span>
+      </h2>
+      <p class="w-full md:w-4/5 xl:w-3/4 mx-auto">
+        Where been dedicated to transforming lives through fitness for over 10 years. Our state-of-the-art facility offers
+      </p>
+    </div>
+
+    <!-- Static Grid for Now -->
+<div class="py-6 md:py-8 relative mt-6 xl:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
+      {teamData.map((trainer) => (
+        <div class="relative group d2c_expert_wrapper h-full">
+          <div class="h-full">
+            <img
+              src={trainer.image.src}
+              alt={`${trainer.name} Image`}
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+
+            <div class="absolute inset-0 p-7 flex items-end bg-gradient-to-b from-transparent from-0% via-[#01100C]/85 to-[#01100C] to-90%">
+              <div>
+                <h5 class="text-2xl font-normal text-primary uppercase">{trainer.name}</h5>
+                <p class="text-base text-white">{trainer.designation}</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-[#2CCB99] opacity-15 absolute inset-0 group-hover:opacity-0 transition-all" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

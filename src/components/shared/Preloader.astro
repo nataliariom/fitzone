@@ -1,0 +1,29 @@
+---
+import Logo from "../../assets/images/logo/logo.png";
+---
+
+<div id="preloader" class="preloader fixed inset-0 z-50 bg-secondary flex items-center justify-center transition-opacity duration-500">
+  <div class="text-center">
+    <img
+      src={Logo.src}
+      alt="Logo"
+      class="max-w-[300px] mb-6 mx-auto block"
+      loading="eager"
+    />
+    <div class="custom-loader mx-auto"></div>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const preloader = document.getElementById("preloader");
+    if (preloader) {
+      setTimeout(() => {
+        preloader.style.opacity = "0";
+        setTimeout(() => {
+          preloader.style.display = "none";
+        }, 500); // tiempo de fade
+      }, 300); // tiempo visible inicial
+    }
+  });
+</script>

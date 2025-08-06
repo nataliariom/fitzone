@@ -1,0 +1,87 @@
+---
+
+
+import GalleryImg1 from '../../assets/images/Gallery-1.jpg';
+import GalleryImg2 from '../../assets/images/Gallery-2.jpg';
+import GalleryImg3 from '../../assets/images/Gallery-3.jpg';
+import GalleryImg4 from '../../assets/images/Gallery-4.jpg';
+import GalleryImg5 from '../../assets/images/Gallery-5.jpg';
+
+const galleryImages = [
+  { src: GalleryImg1, alt: 'Gallery Image 1' },
+  { src: GalleryImg2, alt: 'Gallery Image 2' },
+  { src: GalleryImg3, alt: 'Gallery Image 3' },
+  { src: GalleryImg1, alt: 'Gallery Image 1 Repeat' },
+  { src: GalleryImg4, alt: 'Gallery Image 4' },
+  { src: GalleryImg5, alt: 'Gallery Image 5' },
+];
+---
+<section id="d2c_gallery">
+  <div class="container">
+    <div class="text-center w-full md:w-11/12 lg:w-4/5 xl:w-[60%] mx-auto">
+      <h2 class="d2c_title">
+        View our <br />
+        <span class="text-outline" data-text="Gallery">Gallery</span>
+      </h2>
+      <p class="w-full md:w-4/5 xl:w-3/4 mx-auto">
+        A visual showcase of the gym facilities, equipment, group classes, and events.
+      </p>
+    </div>
+
+    <!-- Carousel -->
+   <div id="gallery-carousel" class="overflow-x-auto whitespace-nowrap mt-10 xl:mt-16 pb-4 scrollbar-hide scroll-smooth">
+  <div class="flex gap-6 px-2 md:px-4 w-max">
+    {galleryImages.map((item) => (
+      <div class="relative group inline-block w-72 md:w-96 flex-shrink-0 rounded-xl overflow-hidden">
+  <img
+    src={item.src.src}
+    alt={item.alt}
+    class="w-full h-90 object-cover"
+  />
+  <div class="absolute inset-0 bg-[#2ccb99] opacity-20 group-hover:opacity-0 transition-opacity duration-300 z-10"></div>
+</div>
+
+
+    ))}
+  </div>
+</div>
+
+  </div>
+</section>
+
+<script is:inline>
+  const carousel = document.getElementById('gallery-carousel');
+
+  let scrollAmount = 0;
+  let maxScroll = 0;
+  let step = 1.5; // velocidad
+  let interval = null;
+
+  function startAutoScroll() {
+    interval = setInterval(() => {
+      if (!carousel) return;
+
+      carousel.scrollLeft += step;
+      scrollAmount += step;
+
+      if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
+        carousel.scrollLeft = 0; // vuelve al inicio
+        scrollAmount = 0;
+      }
+    }, 20); // velocidad de movimiento
+  }
+
+  function stopAutoScroll() {
+    clearInterval(interval);
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    startAutoScroll();
+
+    // Detener en hover
+    carousel.addEventListener('mouseenter', stopAutoScroll);
+    carousel.addEventListener('mouseleave', startAutoScroll);
+  });
+</script>
+
+

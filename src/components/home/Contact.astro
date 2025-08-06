@@ -1,0 +1,104 @@
+---
+const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const packages = ['Basic', 'Standard', 'Premium'];
+---
+
+<section class="d2c_gradient_tl" id="d2c_contact">
+  <div class="container">
+    <!-- Encabezado -->
+    <div class="text-center w-full md:w-11/12 lg:w-4/5 xl:w-[60%] mx-auto">
+      <h2 class="d2c_title">
+        get in <br />
+        <span class="text-outline" data-text="Touch">Touch</span>
+      </h2>
+      <p class="w-full md:w-4/5 xl:w-3/4 mx-auto">
+        We provide clear and concise answers to help users understand more about the gym's services and policies.
+      </p>
+    </div>
+
+    <!-- Contenido -->
+    <div class="grid grid-cols-12 gap-4 md:gap-6 mt-10 xl:mt-14">
+      <!-- Formulario -->
+      <div class="col-start-1 col-span-12 lg:col-span-8">
+        <form class="space-y-8" id="contactForm" data-aos="fade-up">
+          <!-- Nombre y Teléfono -->
+          <div class="grid grid-cols-1 gap-8 sm:grid-cols-6">
+            <div class="sm:col-span-3">
+              <label class="form-label">Full Name</label>
+              <input type="text" name="name" class="form-control d2c_card_bg" placeholder="Enter your name" required />
+            </div>
+            <div class="sm:col-span-3">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" name="phone" class="form-control d2c_card_bg" placeholder="Enter your number" required />
+            </div>
+          </div>
+
+          <!-- Email y Paquete -->
+          <div class="grid grid-cols-1 gap-8 sm:grid-cols-6">
+            <div class="sm:col-span-3">
+              <label class="form-label">Email</label>
+              <input type="email" name="email" class="form-control d2c_card_bg" placeholder="Enter your email" required />
+            </div>
+            <div class="sm:col-span-3">
+              <label class="form-label">Select your package</label>
+              <div class="grid grid-cols-3 pt-4">
+                {packages.map(pkg => (
+                  <label class="flex items-center gap-x-1">
+                    <input
+                      type="radio"
+                      name="package"
+                      value={pkg}
+                      class="relative size-4 appearance-none rounded border border-greenish-gray bg-transparent checked:border-primary checked:bg-primary focus-visible:outline-2"
+                      required
+                    />
+                    <span class="text-white text-md xl:text-xl font-secondary capitalize ml-1">{pkg}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- Mensaje -->
+          <div>
+            <label class="form-label">Message</label>
+            <textarea name="message" rows="4" class="form-control d2c_card_bg" placeholder="Enter your message" required></textarea>
+          </div>
+
+          <button type="submit" class="d2c_btn d2c_btn_secondary">send message now</button>
+          <p id="formSuccess" class="text-green-400 font-medium mt-2 hidden">Message sent successfully!</p>
+        </form>
+      </div>
+
+      <!-- Horarios -->
+      <div class="col-start-1 col-span-12 lg:col-start-9 lg:col-span-4">
+        <div class="mt-5 md:mt-4 lg:mt-0 py-8 px-6 border border-greenish-gray rounded-lg space-y-10">
+          <h4 class="text-3xl uppercase font-normal font-primary mb-2 bg-gradient-to-b from-primary to-secondary text-transparent bg-clip-text border-b border-b-greenish-gray pb-2">
+            Training Hours
+          </h4>
+          <ul class="d2c_training_hours">
+            {days.map(day => (
+              <li class="border-b border-b-greenish-gray pt-4 pb-2 flex gap-3 justify-between">
+                <span class="w-3/5">{day}</span>
+                <span class="w-2/5 text-end">07.00 - 21.00</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.getElementById("contactForm")?.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    console.log("Form Submitted:", data);
+    form.reset();
+    const successMsg = document.getElementById("formSuccess");
+    successMsg.classList.remove("hidden");
+    setTimeout(() => successMsg.classList.add("hidden"), 3000);
+  });
+</script>

@@ -1,0 +1,17 @@
+---
+---
+
+<div class="tittle-outline-helper" aria-hidden="true"></div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const outlinedTexts = document.querySelectorAll(".text-outline");
+    outlinedTexts.forEach((span) => {
+      const nochange = span.getAttribute("data-nochange");
+      if (!nochange) {
+        const text = span.textContent?.trim() || "";
+        span.setAttribute("data-text", text);
+      }
+    });
+  });
+</script>

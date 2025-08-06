@@ -1,0 +1,46 @@
+---
+import "../styles/global.css";
+
+import Preloader from "../components/shared/Preloader.astro";
+import SmoothScroll from "../components/shared/Lenis.astro";
+import TittleOutline from "../components/shared/TitleOutline.astro";
+import AOSInit from "../components/shared/AOSInit.astro";
+import Header from "../components/shared/Header.astro";
+import Footer from "../components/shared/Footer.astro";
+---
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk&display=swap" rel="stylesheet" />
+    <title>Gymkear - Best Gym Astro Template</title>
+    <meta name="description" content="Gym Website Astro Template for bold, high-converting fitness websites. Gymkear - Best Gym Astro Website Template helps you to build brand." />
+    <meta property="og:title" content="Gymkear - Best Gym Astro Website Template" />
+    <meta property="og:description" content="Gym Website Astro Template for bold, high-converting fitness websites." />
+    <meta property="og:image" content="https://designtocodes.com/wp-content/uploads/2025/06/Gymkear-Best-Gym-Nextjs-Website-Template.jpg" />
+  </head>
+  <body class="antialiased font-primary font-secondary">
+    <Preloader />
+    <SmoothScroll />
+    <TittleOutline />
+    <AOSInit />
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>

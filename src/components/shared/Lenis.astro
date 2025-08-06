@@ -1,0 +1,30 @@
+---
+---
+
+
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.41/bundled/lenis.min.js" defer></script>
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const checkLenis = () => {
+      if (typeof window.Lenis !== 'undefined') {
+        const lenis = new window.Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smooth: true,
+        });
+
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+      } else {
+        setTimeout(checkLenis, 50);
+      }
+    };
+
+    checkLenis();
+  });
+</script>
+
