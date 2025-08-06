@@ -38,7 +38,7 @@ const galleryImages = [
               class="w-full h-90 object-cover"
               loading="lazy"
             />
-  <div class="absolute inset-0 bg-[#0FF207] opacity-20 group-hover:opacity-0 transition-opacity duration-300 z-10"></div>
+<div class="absolute inset-0 bg-[#0FF207] opacity-20 z-10"></div>
 </div>
 
 
@@ -48,7 +48,6 @@ const galleryImages = [
 
   </div>
 </section>
-
 <script is:inline>
   const carousel = document.getElementById('gallery-carousel');
   let isTouching = false;
@@ -58,14 +57,21 @@ const galleryImages = [
   function startAutoScroll() {
     if (interval) clearInterval(interval);
     interval = setInterval(() => {
-      if (isTouching) return; // No auto-scroll mientras tocas
+      if (isTouching) return;
+
+      // Si estamos cerca del final de la duplicación
+      if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
+        // 💡 Desactiva scroll suave temporalmente para evitar el “brinco”
+        carousel.style.scrollBehavior = 'auto';
+        carousel.scrollLeft = 0;
+
+        // ✅ Reactiva scroll suave para el resto del tiempo
+        requestAnimationFrame(() => {
+          carousel.style.scrollBehavior = 'smooth';
+        });
+      }
 
       carousel.scrollLeft += step;
-
-      // Si llegó al final, hace un scroll invisible para que no salte brusco
-      if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 1) {
-        carousel.scrollLeft = 0;
-      }
     }, 20);
   }
 
@@ -74,13 +80,14 @@ const galleryImages = [
   }
 
   window.addEventListener('DOMContentLoaded', () => {
+    // Asegúrate de que comience en 0
+    carousel.scrollLeft = 0;
+
     startAutoScroll();
 
-    // Pausar cuando se hace hover con mouse
     carousel.addEventListener('mouseenter', stopAutoScroll);
     carousel.addEventListener('mouseleave', startAutoScroll);
 
-    // Pausar mientras se toca en móvil
     carousel.addEventListener('touchstart', () => {
       isTouching = true;
     });
